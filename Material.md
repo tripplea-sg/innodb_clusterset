@@ -29,6 +29,7 @@ mysqlsh gradmin:grpass@localhost:3311 --cluster --interactive -e "cluster.create
 ### Create a Replica Cluster
 ```
 mysqlsh -e "dba.deploySandboxInstance(5311)"
+mysqlsh -- dba configure-instance { --host=127.0.0.1 --port=5311 --user=root } --clusterAdmin=gradmin --clusterAdminPassword='grpass' --interactive=false --restart=true
 mysqlsh gradmin:grpass@localhost:3311 --cluster --interactive -e "cluster.getClusterSet().createReplicaCluster('gradmin:grpass@localhost:5311','cluster2')"
 
 mysqlsh gradmin:grpass@localhost:5311 -- cluster status
